@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced multi-step professional form with validation">
+    <title>Professional Multi-Step Form | Service Application</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="form-wrapper">
+        <div class="form-container" role="form" aria-labelledby="form-title">
+            <h1 id="form-title" class="sr-only">Service Application Form</h1>
+            
+            <!-- Progress Indicator -->
+            <div class="progress-indicator" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5">
+                <ol class="progress-steps">
+                    <li class="step active" data-step="1" aria-current="step">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Personal</span>
+                    </li>
+                    <li class="step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Contact</span>
+                    </li>
+                    <li class="step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Service</span>
+                    </li>
+                    <li class="step" data-step="4">
+                        <span class="step-number">4</span>
+                        <span class="step-label">Payment</span>
+                    </li>
+                    <li class="step" data-step="5">
+                        <span class="step-number">5</span>
+                        <span class="step-label">Review</span>
+                    </li>
+                </ol>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%"></div>
+                </div>
+            </div>
+
+            <!-- Form Steps -->
+            <form id="serviceApplicationForm" novalidate>
+                <!-- Step 1: Personal Information -->
+                <fieldset class="form-step active" data-step="1" aria-labelledby="step-1-title">
+                    <legend id="step-1-title" class="step-title">Personal Information</legend>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="firstName">First Name*</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="firstName" name="firstName" required minlength="2" 
+                                       aria-required="true" aria-describedby="firstName-help">
+                                <i class="fas fa-check-circle valid-icon"></i>
+                                <i class="fas fa-exclamation-circle invalid-icon"></i>
+                            </div>
+                            <small id="firstName-help" class="help-text">Minimum 2 characters</small>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name*</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="lastName" name="lastName" required minlength="2" 
+                                       aria-required="true">
+                                <i class="fas fa-check-circle valid-icon"></i>
+                                <i class="fas fa-exclamation-circle invalid-icon"></i>
+                            </div>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">Date of Birth*</label>
+                            <div class="input-wrapper">
+                                <input type="date" id="dob" name="dob" required 
+                                       aria-required="true" max="">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <div class="input-wrapper">
+                                <select id="gender" name="gender">
+                                    <option value="" selected disabled>Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                    <option value="prefer-not-to-say">Prefer not to say</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Step 2: Contact Information -->
+                <fieldset class="form-step" data-step="2" aria-labelledby="step-2-title" disabled>
+                    <legend id="step-2-title" class="step-title">Contact Information</legend>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="email">Email Address*</label>
+                            <div class="input-wrapper">
+                                <input type="email" id="email" name="email" required 
+                                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                                       aria-required="true">
+                                <i class="fas fa-check-circle valid-icon"></i>
+                                <i class="fas fa-exclamation-circle invalid-icon"></i>
+                            </div>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number*</label>
+                            <div class="input-wrapper">
+                                <input type="tel" id="phone" name="phone" required
+                                       pattern="[\+]\d{1,3}[-\s]?\d{3}[-\s]?\d{3}[-\s]?\d{4}$">
+                                <i class="fas fa-check-circle valid-icon"></i>
+                                <i class="fas fa-exclamation-circle invalid-icon"></i>
+                            </div>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Street Address*</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="address" name="address" required>
+                                <i class="fas fa-check-circle valid-icon"></i>
+                                <i class="fas fa-exclamation-circle invalid-icon"></i>
+                            </div>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address2">Address Line 2</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="address2" name="address2">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City*</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="city" name="city" required>
+                                <i class="fas fa-check-circle valid-icon"></i>
+                                <i class="fas fa-exclamation-circle invalid-icon"></i>
+                            </div>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state">State/Province*</label>
+                            <div class="input-wrapper">
+                                <select id="state" name="state" required>
+                                    <option value="" selected disabled>Select state</option>
+                                    <option value="CA">California</option>
+                                    <option value="NY">New York</option>
+                                    <!-- More states -->
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="zip">ZIP/Postal Code*</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="zip" name="zip" required
+                                       pattern="^\d{5}(?:[-\s]\d{4})?$">
+                                <i class="fas fa-check-circle valid-icon"></i>
+                                <i class="fas fa-exclamation-circle invalid-icon"></i>
+                            </div>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">Country*</label>
+                            <div class="input-wrapper">
+                                <select id="country" name="country" required>
+                                    <option value="" selected disabled>Select country</option>
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <!-- More countries -->
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Step 3: Service Details -->
+                <fieldset class="form-step" data-step="3" aria-labelledby="step-3-title" disabled>
+                    <legend id="step-3-title" class="step-title">Service Details</legend>
+                    
+                    <div class="form-group">
+                        <fieldset class="radio-group">
+                            <legend>Service Type*</legend>
+                            <div class="radio-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="serviceType" value="standard" required checked>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-label">Standard Service</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="serviceType" value="premium">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-label">Premium Service</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="serviceType" value="custom">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-label">Custom Service</span>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="form-group">
+                        <fieldset class="checkbox-group">
+                            <legend>Additional Options (Select all that apply)</legend>
+                            <div class="checkbox-options">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="options" value="support">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-label">24/7 Support</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="options" value="maintenance">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-label">Regular Maintenance</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="options" value="training">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-label">Training Sessions</span>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="startDate">Preferred Start Date*</label>
+                            <div class="input-wrapper">
+                                <input type="date" id="startDate" name="startDate" required
+                                       min="">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeSlot">Preferred Time Slot*</label>
+                            <div class="input-wrapper">
+                                <select id="timeSlot" name="timeSlot" required>
+                                    <option value="" disabled selected>Select a time</option>
+                                    <option value="morning">Morning (9AM-12PM)</option>
+                                    <option value="afternoon">Afternoon (1PM-5PM)</option>
+                                    <option value="evening">Evening (6PM-9PM)</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="requirements">Special Requirements</label>
+                        <textarea id="requirements" name="requirements" rows="4"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- Step 4: Payment Information -->
+                <fieldset class="form-step" data-step="4" aria-labelledby="step-4-title" disabled>
+                    <legend id="step-4-title" class="step-title">Payment Information</legend>
+                    
+                    <div class="form-group">
+                        <fieldset class="radio-group">
+                            <legend>Payment Method*</legend>
+                            <div class="radio-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="paymentMethod" value="credit" required checked>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-label">Credit Card</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="paymentMethod" value="paypal">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-label">PayPal</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="paymentMethod" value="bank">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-label">Bank Transfer</span>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div id="creditCardFields">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="cardNumber">Card Number*</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="cardNumber" name="cardNumber" 
+                                           pattern="[\d ]{16,22}" required>
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <span class="error-message" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cardName">Name on Card*</label>
+                                <input type="text" id="cardName" name="cardName" required>
+                                <span class="error-message" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date*</label>
+                                <input type="month" id="expiry" name="expiry" required min="">
+                                <span class="error-message" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cvv">CVV*</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="cvv" name="cvv" 
+                                           pattern="\d{3,4}" required>
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <span class="error-message" aria-live="polite"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="paypalFields" style="display: none;">
+                        <div class="form-group">
+                            <p>You will be redirected to PayPal to complete your payment after submission.</p>
+                        </div>
+                    </div>
+
+                    <div id="bankFields" style="display: none;">
+                        <div class="form-group">
+                            <p>Bank transfer details will be provided after submission.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="billingAddressSame">
+                            <input type="checkbox" id="billingAddressSame" name="billingAddressSame" checked>
+                            Billing address same as contact address
+                        </label>
+                    </div>
+
+                    <div id="billingAddressFields" style="display: none;">
+                        <!-- Billing address fields would go here -->
+                    </div>
+                </fieldset>
+
+                <!-- Step 5: Review and Submit -->
+                <fieldset class="form-step" data-step="5" aria-labelledby="step-5-title" disabled>
+                    <legend id="step-5-title" class="step-title">Review and Submit</legend>
+                    
+                    <div class="summary-container">
+                        <h3>Please review your information:</h3>
+                        <div class="summary-content" id="formSummary"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newsletter">
+                            <input type="checkbox" id="newsletter" name="newsletter" checked>
+                            Subscribe to our newsletter
+                        </label>
+                    </div>
+
+                    <div class="form-group terms-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-label">I agree to the <a href="#" target="_blank">Terms and Conditions</a>*</span>
+                        </label>
+                        <span class="error-message" aria-live="polite"></span>
+                    </div>
+                </fieldset>
+
+                <!-- Form Navigation -->
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-back" disabled aria-label="Previous step">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <div class="step-indicator">
+                        Step <span id="currentStep">1</span> of <span id="totalSteps">5</span>
+                    </div>
+                    <button type="button" class="btn btn-next" aria-label="Next step">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" class="btn btn-submit" disabled>
+                        Submit Application <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Success Modal -->
+        <div class="modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+            <div class="modal-content">
+                <div class="modal-icon success">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 id="modal-title">Application Submitted Successfully!</h2>
+                <p>Thank you for your application. We'll contact you shortly with confirmation details.</p>
+                <div class="modal-actions">
+                    <button class="btn btn-modal" id="modalClose">Close</button>
+                    <button class="btn btn-modal btn-outline" id="modalPrint">
+                        <i class="fas fa-print"></i> Print Confirmation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/form-validation.js" defer></script>
+    <script src="js/form-steps.js" defer></script>
+    <script src="js/form-submission.js" defer></script>
+    <script src="js/payment-methods.js" defer></script>
+    <script src="js/address-toggle.js" defer></script>
+</body>
+</html>
